@@ -3,3 +3,8 @@ prompt_msg = '''You are a professional market researcher working in the car manu
 In order to perform market research you need to define 10 statements to which the users will respond on a scale 1-5.
 1 means stromgly disagree while 5 means stringly agree.'''
 
+
+
+
+
+
