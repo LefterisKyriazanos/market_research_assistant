@@ -1,0 +1,94 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+.ENV/
+env.bak/
+venv.bak/
+.pip/
+pip-bak/
+
+# Packages installed by pip
+*.egg-info/
+*.egg
+dist/
+build/
+eggs/
+
+# Installer logs
+pip-log.txt
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.pyc
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# pyenv
+.python-version
+
+# dotenv
+.env
+
+# Python coverage
+.coverage
+.coverage.*
+htmlcov/
+
+# Translations
+*.mo
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checking
+.pyre/
+
+# pytest
+__pycache__/
+.cache/
+
+# pyenv
+.python-version
+
+# Environments
+.env
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Others
+*~
+.DS_Store
+thumbs.db
