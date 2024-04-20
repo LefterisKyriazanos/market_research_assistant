@@ -35,7 +35,7 @@ def copy_file(file_id: str, destination_folder_id: str, new_name='') -> str:
     creds = get_credentials()
     file_metadata = {
         'parents': [destination_folder_id],
-        'name':'TITTLED'
+        'name': new_name
     }
     if new_name:
         file_metadata['name'] = new_name
@@ -113,10 +113,31 @@ def add_question(client, question, question_index, formId):
         .execute()
     )
         
+def add_form_description(client, form_id, description):
+    # Request body to add description to a Form
+    update = {
+        "requests": [
+            {
+                "updateFormInfo": {
+                    "info": {
+                        "description": (
+                           description
+                        ),
+                    },
+                    "updateMask": "description",
+                }
+            }
+        ]
+    }
+    # Update the form with a description
+    update_description = (
+        client.forms()
+        .batchUpdate(formId=form_id, body=update)
+        .execute()
+    )
 
 
-
-def google_form_generator(raw_text, folder_id, form_name):
+def google_form_generator(raw_text, folder_id, form_name, form_description):
     # Authenticate and create a service
     creds = get_credentials()
     forms_service = build('forms', 'v1', credentials=creds)
@@ -127,7 +148,7 @@ def google_form_generator(raw_text, folder_id, form_name):
     createResult = forms_service.forms().create(
         body={
         "info": {
-        "title": "My new form",
+        "title": form_name,
         # 'description': 'This is a survey form created from raw text.', 
         # 'folderId': folder_id
     }}
@@ -136,33 +157,12 @@ def google_form_generator(raw_text, folder_id, form_name):
 
     # returns new file id of relocated file
     form_id = relocate_file(form_id, target_folder_id=folder_id, new_file_name= form_name)
-    # Request body to add a video item to a Form
-    # Request body to add description to a Form
-    update = {
-        "requests": [
-            {
-                "updateFormInfo": {
-                    "info": {
-                        "description": (
-                            "Please complete this quiz based on this week's"
-                            " readings for class."
-                        ),
-                    },
-                    "updateMask": "description",
-                }
-            }
-        ]
-    }
-
-    # Update the form with a description
-    question_setting = (
-        forms_service.forms()
-        .batchUpdate(formId=form_id, body=update)
-        .execute()
-    )
-
-
+    # add description
+    add_form_description(forms_service, form_id, form_description)
+ 
+    # add questions/statements
     for index, question in enumerate(questions):
+        print(question)
         add_question(client=forms_service, question=question, formId=form_id, question_index = index)
 
      # Print the result to see it now has a video
@@ -176,5 +176,5 @@ if __name__ == "__main__":
     random_number = random.randint(1, 1000)
     form_name = f'{random_number}_latest_form'
     print(form_name)
-    google_form_generator(raw_text, '1ghOnW9RKaINHnUz3aPqMBPHlyW2FCkn-', form_name=form_name)
-    print('ok')
+    # google_form_generator(raw_text, '1ghOnW9RKaINHnUz3aPqMBPHlyW2FCkn-', form_name=form_name)
+    # print('ok')
