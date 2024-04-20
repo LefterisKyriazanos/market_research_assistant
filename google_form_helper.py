@@ -167,7 +167,7 @@ def google_form_generator(raw_text, folder_id, form_name, form_description):
 
      # Print the result to see it now has a video
     result = forms_service.forms().get(formId=form_id).execute()
-    print(result)
+    # print(result)
     print("Survey Form created successfully.")
 
 if __name__ == "__main__":

@@ -34,7 +34,8 @@ if submit_button:
         response = lch.generate_survey_statements(user_goal, user_industry, user_product)
         print('Survey Statements Generated!')
         response_text = response['text']
-        st.text(response_text)
+        st.success('Survey Statements Generated!')
+        st.markdown(response_text)
         # st.text('Click to generate Google Form in Google Drive')
         # generate_form_button = st.button('Generate Google Form')
         if generate_form_checkbox:
@@ -42,7 +43,7 @@ if submit_button:
             form_name = user_goal +  ' of ' + user_product
             gf.google_form_generator(response_text, '1ghOnW9RKaINHnUz3aPqMBPHlyW2FCkn-', form_name, 'Please respond on a scale 1-5')
             print('User Form Created!')
-            st.text('Google Form Uploaded to Drive!')
+            st.success('Google Form Uploaded to Drive!')
         else:
             st.stop()
     else:
