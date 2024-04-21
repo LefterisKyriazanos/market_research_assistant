@@ -264,13 +264,13 @@ def add_form_description(client: Resource, form_id: str, description: str):
     )
 
 
-def google_form_generator(raw_text: str, folder_id: str, form_name: str, form_description: str):
+def google_form_generator(text_list: list, folder_id: str, form_name: str, form_description: str):
     
     """
     Generate a Google Form based on raw text input.
 
     Parameters:
-    - raw_text (str): The raw text containing individual questions/statements separated by newlines.
+    - text_list (list): The list containing individual questions/statements.
     - folder_id (str): The ID of the folder where the Google Form will be placed.
     - form_name (str): The name of the Google Form.
     - form_description (str): The description of the Google Form.
@@ -301,8 +301,6 @@ def google_form_generator(raw_text: str, folder_id: str, form_name: str, form_de
     # Authenticate and create a service
     creds = get_credentials()
     forms_service = build('forms', 'v1', credentials=creds)
-    # Split raw text into individual questions
-    questions = raw_text.strip().split('\n')
 
     # Create a new Google Form
     createResult = forms_service.forms().create(
@@ -321,7 +319,7 @@ def google_form_generator(raw_text: str, folder_id: str, form_name: str, form_de
     add_form_description(client= forms_service, form_id= form_id, description= form_description)
  
     # add questions/statements
-    for index, question in enumerate(questions):
+    for index, question in enumerate(text_list):
         # print(question)
         add_question_to_form(client=forms_service, question=question, formId=form_id, question_index = index)
 
