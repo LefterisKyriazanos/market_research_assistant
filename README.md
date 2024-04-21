@@ -1,13 +1,20 @@
 # Market Research Survey Generator
 
-The Market Research Survey Generator is a Python application that leverages Langchain and OpenAI to create market research survey statements based on user input. It provides users with the ability to generate a survey containing 10 statements/questions tailored to their specific market research needs. Additionally, the application allows users to automatically create a corresponding Google Form in their Google Drive.
+The Market Research Survey Generator is a Python application that leverages Langchain, HuggingFace transformers and OpenAI to create market research survey statements based on user input. It provides users with the ability to generate a survey containing 10 statements/questions tailored to their specific market research needs. Additionally, the application allows users to automatically create a corresponding Google Form in their Google Drive. See list of [supported languages](https://huggingface.co/SnypzZz/Llama2-13b-Language-translate#languages-covered). 
+
+ - [gpt-3-5-turbo](https://platform.openai.com/docs/models/gpt-3-5-turbo): model used for survey content generation
+ - [SnypzZz/Llama2-13b-Language-translate](https://huggingface.co/SnypzZz/Llama2-13b-Language-translate): model used for survey translation
+
+
 
 ![Alt Text](./media/demo.gif)
+
 
 
 ## Features
 
 - **Dynamic Survey Generation**: Generate market research survey statements based on user needs.
+- **Support for 40+ languages**: Make surveys accessible to wider audiences.
 - **Google Form Integration**: Create a Google Form in Google Drive with the generated survey statements.
 - **Streamlit User Interface**: Hosted on localhost, the application features a basic user interface powered by Streamlit.
 
@@ -17,7 +24,7 @@ To rebuild and run the application on localhost, ensure you have the following:
 
 - [Docker](https://www.docker.com/products/docker-desktop/)
 - [Active OpenAI key](https://platform.openai.com/api-keys)
-- [Google Cloud OAuth 2.0 credentials (credentials.json)](https://support.google.com/cloud/answer/6158849?hl=en) with *Google Forms API* and *Google Drive API* APIs enabled ([how-to guide](https://cloud.google.com/endpoints/docs/openapi/enable-api#console))
+- [Google Cloud OAuth 2.0 credentials (credentials.json)](https://support.google.com/cloud/answer/6158849?hl=en) with *Google Forms API* and *Google Drive API* APIs enabled ([how to guide](https://cloud.google.com/endpoints/docs/openapi/enable-api#console))
 
 ## Rebuild Instructions
 
